@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Source1: https://learnaddict.com/2016/02/23/modifying-a-raspberry-pi-raspbian-image-on-linux/
+# Source2: https://unix.stackexchange.com/questions/342463/mount-multiple-partitions-from-disk-image-simultaneously#342466
+# Source3: https://linux.die.net/man/8/mount
+# Source4: https://linux.die.net/man/8/losetup
+
+echo STARTING...
+
+echo FDISK:
+fdisk -l raspbian.img
+
+echo MOUNT BOOT:
+offset_boot=8192
+size_boot=88262
+mkdir -p /mnt/image/boot
+mount -v -o offset=$(($offset_boot*512)),sizelimit=$(($size_boot*512)) -t vfat raspbian.img /mnt/image/boot
+ls /mnt/image/boot
+
+echo MOUNT FILESYSTEM:
+offset_filesystem=98304
+size_filesystem=3538944
+mkdir -p /mnt/image/filesystem
+mount -v -o offset=$(($offset_filesystem*512)),sizelimit=$(($size_filesystem*512)) -t ext4 raspbian.img /mnt/image/filesystem
+ls /mnt/image/filesystem
+
+echo SET CHANGES...
+/scripts/ssh-over-wifi
+
+echo UMOUNT:
+umount /mnt/image/boot
+umount /mnt/image/filesystem 

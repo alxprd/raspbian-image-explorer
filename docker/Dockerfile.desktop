@@ -1,0 +1,12 @@
+FROM debian:stretch
+
+RUN apt-get update
+
+RUN apt-get install -y wget unzip
+
+COPY scripts/common/ /scripts/
+COPY scripts/desktop/ /scripts/
+
+WORKDIR /root
+
+RUN /scripts/import

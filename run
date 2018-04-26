@@ -1,7 +1,0 @@
-#!/bin/bash
-
-docker run --rm -it \
-    --privileged \
-    -v $PWD/user/:/root/ \
-    -v $PWD/scripts/:/scripts/ \
-    alxprd/raspbian-image-explorer

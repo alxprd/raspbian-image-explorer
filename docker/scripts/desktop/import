@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo DOWNLOAD ZIP:
+wget -O raspbian.zip http://downloads.raspberrypi.org/raspbian/images/raspbian-2018-04-19/2018-04-18-raspbian-stretch.zip
+
+echo SHA1SUM:
+sha1sum raspbian.zip
+
+echo UNZIP:
+unzip -o raspbian.zip
+original_img=$(ls | grep 20*raspbian*.img)
+mv $original_img raspbian.img
+
+echo CLEAN:
+rm -rf raspbian.zip

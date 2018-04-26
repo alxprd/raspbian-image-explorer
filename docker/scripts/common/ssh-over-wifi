@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo SSH over WiFi
+
+cd /scripts
+
+echo "Set SSID:"
+read ssid
+sed "s/<SSID>/${ssid}/g" wpa_supplicant.conf > wpa_supplicant.conf.temp
+
+echo "Set key:"
+read key
+sed "s/<KEY>/${key}/g" wpa_supplicant.conf.temp > /mnt/image/boot/wpa_supplicant.conf
+
+rm -rf wpa_supplicant.conf.temp
+
+cd $pwd
+
+touch /mnt/image/boot/ssh
