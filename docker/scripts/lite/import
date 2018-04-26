@@ -9,7 +9,7 @@ sha1sum raspbian-lite.zip
 echo UNZIP:
 unzip -o raspbian-lite.zip
 original_img=$(ls | grep 20*raspbian*.img)
-mv $original_img raspbian-lite.img
+mv $original_img raspbian-stretch-lite.img
 
 echo CLEAN:
 rm -rf raspbian-lite.zip

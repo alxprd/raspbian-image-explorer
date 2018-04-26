@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build -t alxprd/raspbian-image-explorer-lite -f docker/Dockerfile.lite ./docker
-docker build -t alxprd/raspbian-image-explorer-desktop -f docker/Dockerfile.desktop ./docker
+docker build -t alxprd/raspbian-image-explorer-stretch-lite -f docker/Dockerfile.stretch-lite ./docker
+docker build -t alxprd/raspbian-image-explorer-stretch-desktop -f docker/Dockerfile.stretch-desktop ./docker
