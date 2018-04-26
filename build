@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build -t alxprd/raspbian-image-explorer -f docker/Dockerfile ./docker
